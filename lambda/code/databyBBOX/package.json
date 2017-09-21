@@ -1,0 +1,14 @@
+{
+  "name": "geospatial_apis_data_bbox",
+  "version": "1.0.0",
+  "description": "AN AWS Lambda function to query database by BBOX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Martin",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^7.3.0"
+  }
+}

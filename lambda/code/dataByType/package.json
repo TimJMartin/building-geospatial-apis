@@ -1,0 +1,14 @@
+{
+  "name": "geospatial_apis_data_type",
+  "version": "1.0.0",
+  "description": "An AWS Lambda function to query a database by Type",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Martin",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^7.3.0"
+  }
+}
