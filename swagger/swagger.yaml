@@ -1,0 +1,107 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Building Geospatial APIs
+  description: Getting started with OpenAPI Specification
+schemes:
+  - https
+paths:
+  /message:
+    get:
+      summary: Get message
+      description: Returns a message from our API
+      responses:
+        '200':
+          description: A successful message
+          schema:
+            type: object
+            items:
+              required:
+                - id
+                - message
+              properties:
+                id:
+                  type: integer
+                message:
+                  type: string
+  '/data/{id}':
+    get:
+      summary: Get specific data feature by ID
+      description: Returns single data feature
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of feature
+          type: integer
+      responses:
+        '200':
+          description: Successful return data
+          schema:
+            $ref: '#/definitions/Feature'
+        '404':
+          description: No data for that ID
+  /data:
+    get:
+      summary: Get all data in a BBOX
+      description: Returns all data in a BBOX
+      parameters:
+        - name: bbox
+          in: query
+          required: true
+          description: BBOX to filter features by
+          type: string
+      responses:
+        '200':
+          description: Successful return of data by BBOX
+          schema:
+            $ref: '#/definitions/Features'
+        '404':
+          description: No data found in that BBOX
+  /data/type/{localtype}:
+    get:
+      summary: stuff
+      parameters:
+        - name: localtype
+          in: path
+          required: true
+          type: string
+        - name: limit
+          in: query
+          required: false
+          type: integer
+          maximum: 100
+          minimum: 1
+        - name: page
+          in: query
+          type: integer
+          required: false
+      responses:
+        '200':
+          description: Successful data filtered by local type
+          schema:
+            $ref: '#/definitions/Features'
+        '404':
+          description: No data found
+definitions:
+  Features:
+    required:
+      - feature
+    properties:
+      feature:
+        $ref: '#/definitions/Feature'
+  Feature:
+    required:
+      - id
+      - x
+      - 'y'
+      - name
+    properties:
+      id:
+        type: integer
+      x:
+        type: integer
+      'y':
+        type: integer
+      name:
+        type: string
