@@ -74,7 +74,21 @@ Message Lambda
 
 We will use the blueprint code as a base and edit it, so replace all the code in the inline editor with the following:
 
-![alt text](./images/message.png "AWS Lambda message code")
+```
+'use strict'
+
+console.log('Loading function);
+
+exports.handler = (event, context, callback) {
+    const responseObj = {
+        statusCode = 200,
+        body: JSON.stringify({"id": 1, "message": "Winning"}, null, 2),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+}
+```
 
 So let's walk through the code:
 
